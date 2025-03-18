@@ -1,6 +1,7 @@
 import 'package:cura/core/helpers/app_assets.dart';
 import 'package:cura/features/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import '../widgets/custom_recommendation_card.dart';
 class RecommendedView extends StatelessWidget {
    RecommendedView({super.key});
    final List<Map<String, String>> recommendations = [
@@ -15,8 +16,7 @@ class RecommendedView extends StatelessWidget {
      {"title": "Asthma", "description": "Airway inflammation leading to breathing difficulties", "image": AppImages.nineRecommendImage},
      {"title": "Asthma", "description": "Airway inflammation leading to breathing difficulties", "image": AppImages.tenRecommendImage},
    ];
-
-  @override
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const MyAppBar(title: "Recommended"),
@@ -25,50 +25,15 @@ class RecommendedView extends StatelessWidget {
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
+            crossAxisSpacing: 2,
+            mainAxisSpacing: 2,
             childAspectRatio: 0.8,
           ),
           itemCount: recommendations.length,
           itemBuilder: (context, index) {
-            return _buildRecommendationCard(recommendations[index]);
+            return buildRecommendationCard(recommendations[index]);
           },
         ),
-      ),
-    );
-  }
-  Widget _buildRecommendationCard(Map<String, String> item) {
-    return Card(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      elevation: 1,
-      child: Column(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(0),
-              child: Image.asset(item["image"]!, fit: BoxFit.cover),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Text(
-                  item["title"]!,
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  item["description"]!,
-                  style: const TextStyle(fontSize: 14, color: Colors.grey),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
