@@ -25,7 +25,7 @@ class ContainerInHome extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 12, fontWeight: FontWeight.w400),
                 ),
-                MyButton(title: "Start"),
+
               ],
             ),
           ),
