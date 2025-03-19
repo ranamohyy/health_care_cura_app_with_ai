@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'helpers/styles.dart';
  ThemeData get appTheme=>ThemeData(
   scaffoldBackgroundColor: Colors.white,
+  splashColor: Colors.transparent,
+  highlightColor: Colors.transparent,
   inputDecorationTheme: InputDecorationTheme(
        hintStyle: kTextStyle14Grey,
        focusedBorder:  OutlineInputBorder(
