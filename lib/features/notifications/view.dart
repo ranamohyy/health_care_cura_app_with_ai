@@ -1,3 +1,4 @@
+import 'package:cura/core/helpers/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -20,13 +21,6 @@ class NotificationsView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 16),
-                const HealthInstructionCard(
-                  showButton: true,
-                  icon: true,
-                  title: "Additional Check-Up Recommended",
-                  description:
-                      "We recommend an additional medical check-up based on your entered symptoms",
-                ),
                 BlocBuilder<NotificationsCubit, NotificationsState>(
                     builder: (context, state) {
                   if (state is NotificationsLoading) {
@@ -43,6 +37,23 @@ class NotificationsView extends StatelessWidget {
                     ));
                   }
                   final cubit = context.read<NotificationsCubit>();
+                  if (state is NotificationsError ||
+                      cubit.notifications.isEmpty) {
+                    return Center(
+                        child: Column(
+                      spacing: 12,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(
+                          height: 70,
+                        ),
+                        Image.asset(
+                          AppImages.emptyNotifications,
+                        ),
+                        const Text("No Notifications yet"),
+                      ],
+                    ));
+                  }
                   return Column(
                     children: List.generate(
                       cubit.notifications.length,
