@@ -24,7 +24,7 @@ List<NotificationsModel>notifications=[];
       }
     } catch (e) {
      log("the error cause ${e.toString()}");
-      emit(NotificationsInitial());
+      emit(NotificationsError());
     }
   }
 
