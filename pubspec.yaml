@@ -19,6 +19,9 @@ dependencies:
   image_picker: ^1.1.2
   table_calendar: ^3.2.0
   chat_bubbles: ^1.7.0
+  dio: ^5.8.0+1
+  logger: ^2.5.0
+  skeletonizer: ^1.4.3
 
 
 
