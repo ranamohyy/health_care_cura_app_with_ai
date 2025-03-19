@@ -4,6 +4,8 @@ const String images = 'assets/images';
 
 class AppIcons {
   static const String calenderFilled = '$icons/calendar_filled.svg';
+  static const String send = '$icons/send.svg';
+  static const String add = '$icons/add.svg';
   static const String backButton = '$icons/back_button.svg';
   static const String archive = '$icons/archive.svg';
   static const String myAppointments = '$icons/appoinments.svg';
