@@ -25,6 +25,7 @@ class AppIcons {
 class AppImages {
   static const String medicines = '$images/medicine_time.png';
   static const String robot = '$images/robot.png';
+  static const String emptyNotifications = '$images/empty_notifications.png';
   static const String secondRecommendImage = '$images/second_reccommend.png';
   static const String thirdRecommendImage = '$images/third_reccommend.png';
   static const String fourthRecommendImage = '$images/fourth_reccommend.png';
