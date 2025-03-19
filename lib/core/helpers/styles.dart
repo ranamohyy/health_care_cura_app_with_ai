@@ -10,6 +10,8 @@ TextStyle get kTextStyleAppBarTitle =>
     const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold);
 TextStyle get kTextStyle16BoldBlack =>
     const TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
+TextStyle get kTextStyle14semiBoldBlack =>
+    const TextStyle(fontSize: 14, fontWeight: FontWeight.w400);
 TextStyle get kTextStyle12Grey =>
     const TextStyle(fontSize: 12, color: Colors.grey);
 TextStyle get kTextStyle14Grey =>
