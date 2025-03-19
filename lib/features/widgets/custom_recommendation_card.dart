@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget buildRecommendationCard(Map<String, String> item) {
+Widget buildRecommendationCard(Map<String, String> item,{bool viewFromHome=false}) {
   return Padding(
     padding: const EdgeInsets.all(4.0),
     child: Container(
@@ -13,6 +13,10 @@ Widget buildRecommendationCard(Map<String, String> item) {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          viewFromHome==true?ClipRRect(
+      borderRadius: const BorderRadius.all(Radius.circular(12)),
+      child: Image.asset(item["image"]!, fit: BoxFit.cover)
+  ):
           Expanded(
             child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(12)),
