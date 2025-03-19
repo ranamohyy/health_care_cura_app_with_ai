@@ -13,6 +13,10 @@ class AppIcons {
   static const String chatFilled = '$icons/chat_bot.svg';
   static const String profile = '$icons/profile.svg';
   static const String calender = '$icons/calender.svg';
+  static const String setting = '$icons/settings.svg';
+  static const String privacy = '$icons/privacy.svg';
+  static const String logOut = '$icons/log_out.svg';
+  static const String editProfile = '$icons/edit_profile.svg';
   static const String menu = '$icons/menu.svg';
   static const String notifications = '$icons/notifications.svg';
   static const String message = '$icons/messege.svg';
@@ -26,6 +30,7 @@ class AppImages {
   static const String medicines = '$images/medicine_time.png';
   static const String robot = '$images/robot.png';
   static const String emptyNotifications = '$images/empty_notifications.png';
+  static const String changeProfile = '$images/change_profile.png';
   static const String secondRecommendImage = '$images/second_reccommend.png';
   static const String thirdRecommendImage = '$images/third_reccommend.png';
   static const String fourthRecommendImage = '$images/fourth_reccommend.png';
