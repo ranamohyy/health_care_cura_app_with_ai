@@ -12,11 +12,11 @@ class MyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        fixedSize: Size.fromHeight(heightOfButton??30),
+        fixedSize: Size.fromHeight(heightOfButton??50),
           backgroundColor: AppColors.primary,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
       onPressed: onTap??() {},
-      child: Text(title, style:style?? kTextStyle12White),
+      child: Text(title, style:style?? kTextStyle16White),
     );
   }
 }
