@@ -1,19 +1,30 @@
 import 'package:cura/core/app_navigator.dart';
 import 'package:cura/core/helpers/CustomSvg.dart';
 import 'package:cura/core/helpers/app_assets.dart';
-import 'package:cura/core/helpers/my_button.dart';
 import 'package:flutter/material.dart';
 import '../../../core/helpers/styles.dart';
 import '../../details_screen/view.dart';
 import '../../notifications/view.dart';
 import '../../reccommended/view.dart';
+import '../../widgets/custom_recommendation_card.dart';
 import '../../widgets/health_card.dart';
-import '../../widgets/recommendation_card.dart';
 part '../../widgets/custom_container_in_home.dart';
 part '../../widgets/custom_hello_and_notificationIcon.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({super.key});
+  final List<Map<String, String>> recommendations = [
+    {
+      "title": "Breast Cancer",
+      "description": "Malignant tumor in breast tissue",
+      "image": AppImages.hospital
+    },
+    {
+      "title": "Ductal Carcinoma",
+      "description": "Cancer starting in milk ducts",
+      "image": AppImages.secondRecommendImage
+    },
+  ];
   List<String> title = [
     "Seasonal allergies or COVID-19",
     "Seasonal allergies or COVID-19"
@@ -82,7 +93,9 @@ class HomeView extends StatelessWidget {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 GestureDetector(
-                  onTap: (){AppNavigator.push(RecommendedView());},
+                  onTap: () {
+                    AppNavigator.push(RecommendedView());
+                  },
                   child: Text(
                     "view all",
                     style: kTextStyle14UnderLine,
@@ -91,15 +104,15 @@ class HomeView extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-            const Row(
+            Row(
               children: [
-                 Expanded(
-                  child: RecommendationCard(image: AppImages.checkCare),
-                ),
-                 SizedBox(width: 10),
                 Expanded(
-                  child: RecommendationCard(image: AppImages.hospital),
-                ),
+                    child: buildRecommendationCard(recommendations[0],
+                        viewFromHome: true)),
+                const SizedBox(width: 10),
+                Expanded(
+                    child: buildRecommendationCard(recommendations[1],
+                        viewFromHome: true)),
               ],
             ),
           ],
