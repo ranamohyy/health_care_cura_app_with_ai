@@ -23,7 +23,7 @@ class AboutUsScreen extends StatelessWidget {
               child: CircleAvatar(
                 radius: 50,
                 backgroundImage:
-                    AssetImage(AppImages.hospital), // Replace with your logo
+                    AssetImage(AppImages.aboutUs), // Replace with your logo
               ),
             ),
             const SizedBox(height: 20),
@@ -43,9 +43,9 @@ class AboutUsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             buildTeamMember(
-                "Dr. Sarah Johnson", "AI Researcher", AppImages.doctors),
-            buildTeamMember("John Doe", "Software Engineer", AppImages.doctors),
-            buildTeamMember("Emily Smith", "UX Designer", AppImages.doctors),
+                "Dr. Sarah Johnson", "AI Researcher", AppImages.doctor),
+            buildTeamMember("John Doe", "Software Engineer",  AppImages.doctor),
+            buildTeamMember("Emily Smith", "UX Designer",  AppImages.doctor),
             const SizedBox(height: 20),
             const Text(
               "Contact Us",
@@ -54,9 +54,9 @@ class AboutUsScreen extends StatelessWidget {
             const SizedBox(height: 10),
             buildContactButton(
                 Icons.language, "Visit Website", "https://yourwebsite.com"),
+            buildContactButton(Icons.phone, "Call Support", "tel:+123456789"),
             buildContactButton(
                 Icons.email, "Email Us", "mailto:support@yourapp.com"),
-            buildContactButton(Icons.phone, "Call Support", "tel:+123456789"),
             const SizedBox(height: 20),
           ],
         ),
