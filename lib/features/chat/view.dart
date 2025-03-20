@@ -82,9 +82,11 @@ class ChatScreen extends StatelessWidget {
                         child: Row(children: [
                           Expanded(
                             child: TextFormField(
+                              maxLines: null, // يسمح بعدد غير محدود من الأسطر
+                              keyboardType: TextInputType.multiline, // يعرض زر "إدخال" في الكيبورد
+                              textInputAction: TextInputAction.newline, // يجعل زر "إدخال" ينشئ سطرًا جديدًا
                               cursorColor: AppColors.primary,
                               controller: cubit.textEditingController,
-                              textInputAction: TextInputAction.send,
                                       focusNode: cubit.textFocusNode,
                               decoration: InputDecoration(
                                 hintText: 'Type your message...',
