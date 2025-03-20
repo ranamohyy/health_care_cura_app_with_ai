@@ -2,7 +2,7 @@ import 'package:cura/core/app_theme.dart';
 import 'package:cura/core/dio_helper.dart';
 import 'package:flutter/material.dart';
 import 'core/app_navigator.dart';
-import 'features/home/nav_home_view.dart';
+import 'features/splash/view.dart';
 
 void main() {
   DioHelper.interceptors();
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Cura Health Care',
       theme: appTheme,
       debugShowCheckedModeBanner: false,
-      home: const NavUserView(),
+      home: const SplashView(),
     );
   }
 }
