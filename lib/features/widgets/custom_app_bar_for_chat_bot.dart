@@ -6,14 +6,6 @@ class CustomAppBarForChatBot extends StatelessWidget implements PreferredSizeWid
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
-      actions:const [Padding(
-        padding:  EdgeInsets.only(right: 8.0),
-        child: CustomSvg(svg:
-        AppIcons.add,
-          width: 50,
-        ),
-      )
-      ],
       leading:  GestureDetector(
         onTap: () => AppNavigator.pop(),
         child: const Padding(
@@ -21,18 +13,17 @@ class CustomAppBarForChatBot extends StatelessWidget implements PreferredSizeWid
           child: CustomSvg(svg: AppIcons.backButton,),
         ),
       ),
+      centerTitle: true,
       title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
         spacing:5,
         children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 8.0),
-          child: Image.asset(
-            AppImages.robot,
-            width: 50,
-          ),
+          SizedBox(width: MediaQuery.of(context).size.width*0.15,),
+        Image.asset(
+          AppImages.robot,
+          width: 50,
         ),
-        Text("chatbot",style: kTextStyleAppBarTitle,)
+        Text("chatbot",style: kTextStyleAppBarTitle,textAlign: TextAlign.center
+          ,)
       ],),);
   }
 
