@@ -95,7 +95,6 @@ class DioHelper {
       return CustomResponse(isSuccess: false
           ,data: ex.response?.data,
           statusCode: ex.response?.statusCode,
-          msg: ex.response!.data['message']
       );
     }
   }
