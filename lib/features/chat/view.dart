@@ -17,71 +17,94 @@ class ChatScreen extends StatelessWidget {
     return BlocProvider(
         create: (context) => ChatBotCubit(),
         child: Scaffold(
-            appBar:const CustomAppBarForChatBot(),
-            body: BlocBuilder<ChatBotCubit, ChatBotState>(
-                builder: (context, state) {
-              final cubit = context.read<ChatBotCubit>();
-              final messages = cubit.messages;
-              final isMe = cubit.isMe;
-              return Column(children: [
-               const SizedBox(height: 20,),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: cubit.messages.length,
-                    itemBuilder: (context, index) => Row(
-                      mainAxisAlignment: isMe[index] == true
-                          ? MainAxisAlignment.end
-                          : MainAxisAlignment.start,
-                      children: [
-                        if (isMe[index] == false) ...{
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            child: Image.asset(
-                              AppImages.robot,
-                              width: 50,
-                            ),
-                          )
-                        },
-                        BubbleSpecialThree(
-                          text: messages[index],
-                          isSender: isMe[index],
-                          tail: false,
-                          sent: isMe[index],
-                          constraints: const BoxConstraints(maxWidth: 150),
-                          color: isMe[index] == true
-                              ? AppColors.primary
-                              : Colors.grey.shade200,
-                          textStyle: TextStyle(
-                            color: isMe[index] == true
-                                ? Colors.grey.shade200
-                                : AppColors.primary,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(children: [
-                    Expanded(
-                      child: TextFormField(
-                        cursorColor: AppColors.primary,
-                        controller: cubit.textEditingController,
-                        textInputAction: TextInputAction.send,
-                        decoration: InputDecoration(
-                          hintText: 'Type your message...',
-                          hintStyle: kTextStyle14Grey,
-                        ),
+          // resizeToAvoidBottomInset: true,
+            backgroundColor: Colors.white,
+            // extendBodyBehindAppBar: true,
+            extendBody: true,
+            appBar: const CustomAppBarForChatBot(),
+            body: BlocBuilder<ChatBotCubit,ChatBotState>(
+                builder:(context, blocState) {
+                final cubit = BlocProvider.of<ChatBotCubit>(context);
+                return StreamBuilder(
+                  stream: cubit.messagesStream,
+                  initialData: cubit.messages,
+                  builder: (context, state) {
+                    final messages = state.data ?? [];
+                    final cubit = context.read<ChatBotCubit>();
+                    return Column(children: [
+                      Expanded(
+                        child: ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            controller: cubit.scrollController,
+                            itemCount:messages.length,
+                            itemBuilder: (context, index) {
+                              final message = messages[index];
+                              final isMe = messages[index].isMe;
+                              return Row(
+                                mainAxisAlignment: message.isMe == true
+                                    ? MainAxisAlignment.end
+                                    : MainAxisAlignment.start,
+                                children: [
+                                  if (!isMe) ...{
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 8.0),
+                                      child: Image.asset(
+                                        AppImages.robot,
+                                        width: 50,
+                                      ),
+                                    )
+                                  },
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                    child: BubbleSpecialThree(
+                                      text: message.text,
+                                      isSender: isMe,
+                                      tail: false,
+                                      sent: isMe,
+                                      // constraints:
+                                      //     const BoxConstraints(maxWidth: 300),
+                                      color: isMe == true
+                                          ? AppColors.primary
+                                          : Colors.grey.shade200,
+                                      textStyle: TextStyle(
+                                        color: isMe == true
+                                            ? Colors.grey.shade200
+                                            : AppColors.primary,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            }),
                       ),
-                    ),
-                    const SizedBox(width: 10,),
-                    GestureDetector(
-                        onTap: (){cubit.sendMessages();},
-                        child: const CustomSvg(svg: AppIcons.send))
-                  ]),
-                )
-              ]);
-            })));
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(children: [
+                          Expanded(
+                            child: TextFormField(
+                              cursorColor: AppColors.primary,
+                              controller: cubit.textEditingController,
+                              textInputAction: TextInputAction.send,
+                                      focusNode: cubit.textFocusNode,
+                              decoration: InputDecoration(
+                                hintText: 'Type your message...',
+                                hintStyle: kTextStyle14Grey,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          GestureDetector(
+                              onTap: () {
+                                cubit.sendMessage();
+                              },
+                              child: const CustomSvg(svg: AppIcons.send))
+                        ]),
+                      )
+                    ]);
+                  });
+              }
+            )));
   }
 }
