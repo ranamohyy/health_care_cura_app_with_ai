@@ -5,6 +5,7 @@ class CustomAppBarForChatBot extends StatelessWidget implements PreferredSizeWid
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      forceMaterialTransparency: true,
       backgroundColor: Colors.white,
       leading:  GestureDetector(
         onTap: () => AppNavigator.pop(),
