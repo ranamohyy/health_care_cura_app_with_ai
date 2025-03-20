@@ -5,7 +5,6 @@ const String images = 'assets/images';
 class AppIcons {
   static const String calenderFilled = '$icons/calendar_filled.svg';
   static const String send = '$icons/send.svg';
-  static const String add = '$icons/add.svg';
   static const String backButton = '$icons/back_button.svg';
   static const String archive = '$icons/archive.svg';
   static const String myAppointments = '$icons/appoinments.svg';
@@ -29,11 +28,14 @@ class AppIcons {
 class AppImages {
   static const String medicines = '$images/medicine_time.png';
   static const String robot = '$images/robot.png';
+  static const String doctor = '$images/doctor.png';
   static const String emptyNotifications = '$images/empty_notifications.png';
   static const String changeProfile = '$images/change_profile.png';
   static const String secondRecommendImage = '$images/second_reccommend.png';
   static const String thirdRecommendImage = '$images/third_reccommend.png';
   static const String fourthRecommendImage = '$images/fourth_reccommend.png';
+  static const String aboutUs = '$images/about_us.png';
+  static const String logo = '$images/logo.png';
   static const String fifthRecommendImage = '$images/fifth_reccommend.png';
   static const String sixRecommendImage = '$images/reccommend6.png';
   static const String sevenRecommendImage = '$images/reccommend7.png';
