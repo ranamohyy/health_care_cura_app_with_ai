@@ -31,6 +31,7 @@ class AppImages {
   static const String doctor = '$images/doctor.png';
   static const String emptyNotifications = '$images/empty_notifications.png';
   static const String changeProfile = '$images/change_profile.png';
+  static const String menna = '$images/menna.png';
   static const String secondRecommendImage = '$images/second_reccommend.png';
   static const String thirdRecommendImage = '$images/third_reccommend.png';
   static const String fourthRecommendImage = '$images/fourth_reccommend.png';
